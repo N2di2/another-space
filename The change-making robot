@@ -1,27 +1,33 @@
-#include <stdio.h>
+#include <stdio.h>  // 引入標準輸入輸出函式庫，讓程式可以使用 printf() 和 scanf()
 
 int main()
 {
-    int amount;
+    int amount;  // 宣告整數變數 amount，用來儲存使用者輸入的金額
+
+    // 宣告六個整數變數，分別記錄各種面額需要的張數或枚數
     int n1000, n100, n50, n10, n5, n1;
-    printf("Please enter the amount: ");
-    scanf("%d", &amount);
-    n1000 = amount / 1000;  
-    amount = amount % 1000;
 
-    n100 = amount / 100;
-    amount = amount % 100;
+    printf("Please enter the amount: ");  // 提示使用者輸入金額
+    scanf("%d", &amount);  // 讀取使用者輸入的整數，並將數值存入 amount
 
-    n50 = amount / 50;
-    amount = amount % 50;
+    n1000 = amount / 1000;  // 用金額除以 1000，取得 1000 元鈔票的張數
+    amount = amount % 1000; // 用餘數運算取得剩下的金額（扣除 1000 元鈔票後）
 
-    n10 = amount / 10;
-    amount = amount % 10;
+    n100 = amount / 100;    // 將剩餘金額除以 100，取得 100 元鈔票的張數
+    amount = amount % 100;  // 取得扣除 100 元鈔票後剩下的金額
 
-    n5 = amount / 5;
-    amount = amount % 5;
+    n50 = amount / 50;      // 將剩餘金額除以 50，取得 50 元鈔票的張數
+    amount = amount % 50;   // 取得扣除 50 元鈔票後剩下的金額
 
-    n1 = amount;
+    n10 = amount / 10;      // 將剩餘金額除以 10，取得 10 元鈔票的張數
+    amount = amount % 10;   // 取得扣除 10 元鈔票後剩下的金額
+
+    n5 = amount / 5;        // 將剩餘金額除以 5，取得 5 元硬幣的枚數
+    amount = amount % 5;    // 取得扣除 5 元硬幣後剩下的金額
+
+    n1 = amount;             // 剩餘金額都由 1 元硬幣組成，因此直接存入 n1
+
+    // 輸出各種面額需要的張數或枚數
     printf("One-thousand dollar bills ($1000): %d\n", n1000);
     printf("One-hundred dollar bills ($100): %d\n", n100);
     printf("Fifty-dollar bills ($50): %d\n", n50);
@@ -29,5 +35,5 @@ int main()
     printf("Five-dollar coins ($5): %d\n", n5);
     printf("One-dollar coins ($1): %d\n", n1);
 
-    return 0;
+    return 0;  // 回傳 0，表示程式正常結束
 }
