@@ -13,26 +13,26 @@ int main() {
     int high = 100;   // 目前有效範圍上限
     int guess;        // 使用者猜測的數字
 
-    printf("=== Hi-Lo 數字猜測遊戲 ===\n");
-    printf("秘密數字已產生（1~100），開始猜測吧！\n");
+    printf("=== Hi-Lo Number Guessing Game ===\n");
+    printf("The secret number has decided(1~100), let's start now!\n");
 
     // 連續遊戲迴圈
     while (1) {
-        printf("\n目前有效範圍：The number is between [%d] and [%d]\n", low, high);
-        printf("請輸入你的猜測：");
+        printf("\nThe valid range is: The number is between [%d] and [%d]\n", low, high);
+        printf("Please enter your guess: ");
         scanf("%d", &guess);
 
         if (guess < secret) {
             // 猜太小，更新下限
             low = guess + 1;
-            printf("太小了！\n");
+            printf("Too small!\n");
         } else if (guess > secret) {
             // 猜太大，更新上限
             high = guess - 1;
-            printf("太大了！\n");
+            printf("Too large!\n");
         } else {
             // 猜中
-            printf("恭喜你！猜中了！秘密數字就是 %d\n", secret);
+            printf("Congratulations! The secret number is %d\n", secret);
             break;
         }
     }
