@@ -1,20 +1,29 @@
-#include <stdio.h>
 
-int main(void)
+#include <stdio.h>  // 引入標準輸入輸出函式庫，讓程式可以使用 printf() 和 scanf()
+
+int main(void)  // 主函式，程式從這裡開始執行
 {
-    int year;
+    int year;  // 宣告整數變數 year，用來儲存使用者輸入的年份
 
-    printf("Please enter a year: ");
-    scanf("%d", &year);
+    printf("Please enter a year: ");  // 提示使用者輸入年份
+    scanf("%d", &year);  // 讀取使用者輸入的整數，並將數值存入 year
 
+    // 如果年份可以被 400 整除，就是閏年
     if (year % 400 == 0)
-        printf("%d is leap year.\n", year);
-    else if (year % 100 == 0)
-        printf("%d is not leap year.\n", year);
-    else if (year % 4 == 0)
-        printf("%d is leap year.\n", year);
-    else
-        printf("%d is not leap year.\n", year);
+        printf("%d is leap year.\n", year);  // 輸出該年份是閏年
 
-    return 0;
+    // 如果不能被 400 整除，但可以被 100 整除，就不是閏年
+    else if (year % 100 == 0)
+        printf("%d is not leap year.\n", year);  // 輸出該年份不是閏年
+
+    // 如果不能被 400 或 100 整除，但可以被 4 整除，就是閏年
+    else if (year % 4 == 0)
+        printf("%d is leap year.\n", year);  // 輸出該年份是閏年
+
+    // 如果以上條件都不符合，就不是閏年
+    else
+        printf("%d is not leap year.\n", year);  // 輸出該年份不是閏年
+
+    return 0;  // 回傳 0，表示程式正常結束
 }
+
