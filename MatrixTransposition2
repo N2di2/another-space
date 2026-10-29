@@ -1,0 +1,45 @@
+
+#include <stdio.h>
+
+int main(void)
+{
+    int M, N;
+    int A[100][100], B[100][100];
+
+    // 輸入矩陣的列數與行數
+    printf("Enter rows and columns: ");
+    scanf("%d %d", &M, &N);
+
+    if (M <= 0 || M > 100 || N <= 0 || N > 100) {
+        printf("Invalid matrix size.\n");
+        return 1;
+    }
+
+    // 逐列輸入矩陣 A
+    for (int i = 0; i < M; i++) {
+        printf("Enter row %d: ", i + 1);
+
+        for (int j = 0; j < N; j++) {
+            scanf("%d", &A[i][j]);
+        }
+    }
+
+    // 將矩陣 A 轉置成矩陣 B
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < N; j++) {
+            B[j][i] = A[i][j];
+        }
+    }
+
+    // 輸出轉置後的矩陣 B
+    printf("Matrix B = A^T:\n");
+
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            printf("%4d ", B[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
