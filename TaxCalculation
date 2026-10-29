@@ -1,0 +1,24 @@
+
+#include <stdio.h>
+
+int main() {
+    double income, tax = 0.0;  // income：收入；tax：應繳稅額
+
+    // 輸入收入
+    printf("Please enter your income: ");
+    scanf("%lf", &income);
+
+    // 判斷收入級距並計算稅額
+    if (income <= 10000) {
+        tax = 0.0;             // 收入小於或等於 10000，免稅
+    } else if (income <= 50000) {
+        tax = income * 0.10;   // 收入大於 10000 且小於或等於 50000，整筆收入課 10%
+    } else {
+        tax = income * 0.20;   // 收入大於 50000，整筆收入課 20%
+    }
+
+    // 輸出應繳稅額，保留小數點後兩位
+    printf("Income tax: %.2f\n", tax);
+
+    return 0;
+}
