@@ -1,0 +1,74 @@
+
+#include <stdio.h>  // 引入標準輸入輸出函式庫
+
+#define MAX 100  // 設定矩陣每個維度的最大值
+
+int main(void)
+{
+    int M, K, N;
+
+    // 輸入矩陣 A 的列數與行數
+    printf("Enter rows and columns of matrix A: ");
+    scanf("%d %d", &M, &K);
+
+    // 輸入矩陣 B 的行數
+    // 矩陣 B 的列數必須等於矩陣 A 的行數 K
+    printf("Enter columns of matrix B: ");
+    scanf("%d", &N);
+
+    // 檢查矩陣大小是否合理
+    if (M <= 0 || M > MAX ||
+        K <= 0 || K > MAX ||
+        N <= 0 || N > MAX) {
+        printf("Invalid matrix size.\n");
+        return 1;
+    }
+
+    // 宣告矩陣 A、B、C
+    int A[MAX][MAX];
+    int B[MAX][MAX];
+    int C[MAX][MAX] = {0};
+
+    // 輸入矩陣 A
+    printf("Enter matrix A:\n");
+
+    for (int i = 0; i < M; i++) {
+        printf("Enter row %d: ", i + 1);
+
+        for (int j = 0; j < K; j++) {
+            scanf("%d", &A[i][j]);
+        }
+    }
+
+    // 輸入矩陣 B
+    printf("Enter matrix B:\n");
+
+    for (int i = 0; i < K; i++) {
+        printf("Enter row %d: ", i + 1);
+
+        for (int j = 0; j < N; j++) {
+            scanf("%d", &B[i][j]);
+        }
+    }
+
+    // 計算矩陣乘法 C = A × B
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < N; j++) {
+            for (int k = 0; k < K; k++) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+
+    // 輸出矩陣 C
+    printf("Matrix C = A x B:\n");
+
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < N; j++) {
+            printf("%4d ", C[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
