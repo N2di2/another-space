@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+// 遞迴計算第 n 個 Fibonacci 數
+// 基底情況：F(0)=0, F(1)=1
+// 遞迴步驟：F(n) = F(n-1) + F(n-2)
+int fibonacci(int n) {
+    // 基底情況 1
+    if (n == 0) {
+        return 0;
+    }
+    // 基底情況 2
+    if (n == 1) {
+        return 1;
+    }
+    // 遞迴步驟
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    // 測試計算 F(7)
+    int result = fibonacci(7);
+    printf("F(7) = %d\n", result);   // 正確答案應為 13
+
+    return 0;
+}
