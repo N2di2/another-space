@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+    int age;
+    int price;
+
+    printf("Please enter age: ");
+    scanf("%d", &age);
+
+    if (age < 12 || age >= 65) {
+        price = 10;     // 兒童或長者優惠價
+    } else {
+        price = 20;     // 一般票價
+    }
+
+    printf("The ticket price is: %d dollars\n", price);
+    return 0;
+}
