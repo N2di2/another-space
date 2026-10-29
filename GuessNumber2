@@ -1,0 +1,58 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    // 設定隨機數種子
+    srand(time(NULL));
+
+    // 產生 1 到 100 的秘密數字
+    int secret = rand() % 100 + 1;
+
+    int low = 1;      // 目前有效範圍下限
+    int high = 100;   // 目前有效範圍上限
+    int guess;        // 使用者猜測的數字
+
+    printf("=== Hi-Lo 數字猜測遊戲 ===\n");
+    printf("秘密數字已產生（1~100），開始猜測吧！\n");
+
+    // 連續遊戲迴圈
+    while (1) {
+        printf("\n目前有效範圍：The number is between [%d] and [%d]\n", low, high);
+        printf("請輸入你的猜測：");
+
+        // 檢查是否輸入整數
+        if (scanf("%d", &guess) != 1) {
+            printf("Illegal input!\n");
+
+            // 清除輸入緩衝區中剩餘的字元
+            int ch;
+            while ((ch = getchar()) != '\n' && ch != EOF);
+
+            continue;
+        }
+
+        // 檢查是否超出目前有效範圍
+        if (guess < low || guess > high) {
+            printf("Illegal input!\n");
+            continue;
+        }
+
+        if (guess < secret) {
+            // 猜太小，更新下限
+            low = guess + 1;
+            printf("太小了！\n");
+        } else if (guess > secret) {
+            // 猜太大，更新上限
+            high = guess - 1;
+            printf("太大了！\n");
+        } else {
+            // 猜中
+            printf("恭喜你！猜中了！秘密數字就是 %d\n", secret);
+            break;
+        }
+    }
+
+    return 0;
+}
