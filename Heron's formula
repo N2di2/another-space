@@ -1,27 +1,43 @@
-#include <stdio.h>
-#include <math.h>
 
-int main()
-{
-int a, b, c;
-float S, A;
+#include <stdio.h>  // 引入標準輸入輸出函式庫，讓程式可以使用 printf() 和 scanf()
+#include <math.h>   // 引入數學函式庫，讓程式可以使用 sqrt() 計算平方根
 
-printf("Please input one side of a triangle: ");
-scanf("%d", &a);
-printf("Please input another side of a triangle: ");
-scanf("%d", &b);
-printf("Please input the other side of a triangle: ");
-scanf("%d", &c);
-if (a + b > c && a + c > b && b + c > a)
+int main()  // 主函式，程式從這裡開始執行
 {
-    S = (a + b + c) / 2.0f;
-    A = sqrt(S * (S - a) * (S - b) * (S - c));
-    printf("The area of the triangle is: %f\n", A);
-}
-else
-{
-    printf("This is not triangle.\n");
-}
+    int a, b, c;  // 宣告三個整數變數，分別儲存三角形的三個邊長
+    float S, A;   // 宣告浮點數變數 S 儲存半周長，A 儲存三角形面積
 
-return 0;
+    // 請使用者輸入第一個邊長
+    printf("Please input one side of a triangle: ");
+    scanf("%d", &a);  // 讀取輸入的整數，並存入變數 a
+
+    // 請使用者輸入第二個邊長
+    printf("Please input another side of a triangle: ");
+    scanf("%d", &b);  // 讀取輸入的整數，並存入變數 b
+
+    // 請使用者輸入第三個邊長
+    printf("Please input the other side of a triangle: ");
+    scanf("%d", &c);  // 讀取輸入的整數，並存入變數 c
+
+    // 判斷三個邊長是否符合三角形的條件：
+    // 任意兩邊相加，都必須大於第三邊
+    if (a + b > c && a + c > b && b + c > a)
+    {
+        // 計算半周長：三邊長相加後除以 2
+        // 使用 2.0f，讓除法可以得到浮點數結果
+        S = (a + b + c) / 2.0f;
+
+        // 使用海龍公式計算三角形面積
+        // sqrt() 用來計算括號內數值的平方根
+        A = sqrt(S * (S - a) * (S - b) * (S - c));
+
+        // 輸出三角形面積，%f 用來輸出浮點數
+        printf("The area of the triangle is: %f\n", A);
+    }
+    else  // 如果三個邊長不符合三角形的條件
+    {
+        printf("This is not triangle.\n");  // 輸出訊息，表示無法組成三角形
+    }
+
+    return 0;  // 回傳 0，表示程式正常結束
 }
