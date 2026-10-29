@@ -1,43 +1,56 @@
-#include <stdio.h>
 
-int main(void)
+#include <stdio.h>  // 引入標準輸入輸出函式庫，讓程式可以使用 printf() 和 scanf()
+
+int main(void)  // 主函式，程式從這裡開始執行
 {
-    int month, day;
-    int days = 0; 
-    int weekday;
+    int month, day;  // 宣告整數變數，分別儲存使用者輸入的月份和日期
+    int days = 0;    // 儲存從 2025 年 1 月 1 日到指定日期之前，經過的天數
+    int weekday;     // 儲存計算出的星期代碼（0～6）
 
-    printf("Please enter the month: ");
-    scanf("%d", &month);
-    printf("Please enter the day: ");
-    scanf("%d", &day);
+    printf("Please enter the month: ");  // 提示使用者輸入月份
+    scanf("%d", &month);  // 讀取月份並存入 month
 
+    printf("Please enter the day: ");  // 提示使用者輸入日期
+    scanf("%d", &day);  // 讀取日期並存入 day
+
+    // 根據月份，累加該月份之前所有月份的天數
+    // month - 1 代表指定月份之前的月份編號
+    // switch 沒有 break，因此符合某個 case 後，會繼續執行下面的 case
     switch (month - 1) {
-        case 11: days = days + 30; 
-        case 10: days = days + 31; 
-        case 9:  days = days + 30;
-        case 8:  days = days + 31; 
-        case 7:  days = days + 31; 
-        case 6:  days = days + 30;
-        case 5:  days = days + 31;  
-        case 4:  days = days + 30;
-        case 3:  days = days + 31;
-        case 2:  days = days + 28; 
-        case 1:  days = days + 31;
+        case 11: days = days + 30;  // 11 月之前要加上 11 月的天數？此處從 12 月開始輸入時使用
+        case 10: days = days + 31;  // 加上 10 月的天數
+        case 9:  days = days + 30;  // 加上 9 月的天數
+        case 8:  days = days + 31;  // 加上 8 月的天數
+        case 7:  days = days + 31;  // 加上 7 月的天數
+        case 6:  days = days + 30;  // 加上 6 月的天數
+        case 5:  days = days + 31;  // 加上 5 月的天數
+        case 4:  days = days + 30;  // 加上 4 月的天數
+        case 3:  days = days + 31;  // 加上 3 月的天數
+        case 2:  days = days + 28;  // 加上 2 月的天數（2025 年不是閏年）
+        case 1:  days = days + 31;  // 加上 1 月的天數
     }
 
-    days = days + day;  
+    days = days + day;  // 加上當月的日期，得到該日期在當年的累計天數
+
+    // 將日期轉換成星期代碼
+    // days - 1：將 1 月 1 日換算為從 0 開始的天數
+    // + 3：因為 2025 年 1 月 1 日是星期三
+    // % 7：將結果限制在 0～6
     weekday = (days - 1 + 3) % 7;
 
+    // 輸出使用者指定的日期
     printf("2025/%d/%d is ", month, day);
+
+    // 根據 weekday 的值，輸出對應的星期名稱
     switch (weekday) {
-        case 0: printf("Sunday\n"); break;
-        case 1: printf("Monday\n"); break;
-        case 2: printf("Tuesday\n"); break;
-        case 3: printf("Wednesday\n"); break;
-        case 4: printf("Thursday\n"); break;
-        case 5: printf("Friday\n"); break;
-        case 6: printf("Saturday\n"); break;
+        case 0: printf("Sunday\n"); break;     // 0 代表星期日，輸出後結束 switch
+        case 1: printf("Monday\n"); break;     // 1 代表星期一
+        case 2: printf("Tuesday\n"); break;    // 2 代表星期二
+        case 3: printf("Wednesday\n"); break;  // 3 代表星期三
+        case 4: printf("Thursday\n"); break;   // 4 代表星期四
+        case 5: printf("Friday\n"); break;     // 5 代表星期五
+        case 6: printf("Saturday\n"); break;   // 6 代表星期六
     }
 
-    return 0;
+    return 0;  // 回傳 0，表示程式正常結束
 }
