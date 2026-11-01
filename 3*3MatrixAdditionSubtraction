@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+int main() {
+    int A[3][3], B[3][3], C[3][3], D[3][3];
+    int i, j;
+
+    // 輸入矩陣 A
+    printf("Please enter the 9 elements of matrix A：\n");
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            scanf("%d", &A[i][j]);
+        }
+    }
+
+    // 輸入矩陣 B
+    printf("Please enter the 9 elements of matrix B：\n");
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            scanf("%d", &B[i][j]);
+        }
+    }
+
+    // 計算 C = A + B 與 D = A - B
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            C[i][j] = A[i][j] + B[i][j];   // 總庫存
+            D[i][j] = A[i][j] - B[i][j];   // 庫存變化
+        }
+    }
+
+    // 顯示矩陣 C（Sum）
+    printf("\nMatrix C (Sum / total inventory)：\n");
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            printf("%5d", C[i][j]);        // 對齊輸出
+        }
+        printf("\n");
+    }
+
+    // 顯示矩陣 D（Difference）
+    printf("\nMatrix D (Difference / change in inventory)：\n");
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            printf("%5d", D[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
