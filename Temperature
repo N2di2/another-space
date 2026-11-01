@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+int main() {
+    int temp[7];          // 存放一週溫度
+    int i;
+    int max, max_day;     // 最高溫與對應日期
+    int min;              // 最低溫
+    int second_max;       // 第二高溫
+    long long sum = 0;    // 用 long long 避免溢位
+    double average;
+
+    // 輸入 7 天溫度
+    printf("Please enter the high temperatures for Day 1 through Day 7 in order：\n");
+    for (i = 0; i < 7; i++) {
+        scanf("%d", &temp[i]);
+        sum += temp[i];
+    }
+    // 初始化
+    max = min = second_max = temp[0];
+    max_day = 1;
+
+    // 找出最高溫、最低溫
+    for (i = 1; i < 7; i++) {
+        if (temp[i] > max) {
+            max = temp[i];
+            max_day = i + 1;      // 日期從 1 開始
+        }
+        if (temp[i] < min) {
+            min = temp[i];
+        }
+    }
+
+    // 找出第二高溫
+    second_max = min;             // 先設一個較小的值
+    for (i = 0; i < 7; i++) {
+        if (temp[i] > second_max && temp[i] < max) {
+            second_max = temp[i];
+        }
+    }
+
+    average = (double)sum / 7;
+
+    // 一次輸出所有結果
+    printf("\n===== Analysis Results =====\n");
+    printf("Highest Temperature：%d 度（發生在 Day %d）\n", max, max_day);
+    printf("Lowest Temperature：%d 度\n", min);
+    printf("Average Temperature：%.2f 度\n", average);
+    printf("Second-Highest Temperature：%d 度\n", second_max);
+
+    return 0;
+}
