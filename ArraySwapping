@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+// 函式原型
+void swap_array_contents(int arr1[], int arr2[], int size);
+
+int main() {
+    int a[5] = {1, 2, 3, 4, 5};
+    int b[5] = {10, 20, 30, 40, 50};
+    int i;
+
+    printf("交換前：\n");
+    printf("a: ");
+    for (i = 0; i < 5; i++) printf("%d ", a[i]);
+    printf("\nb: ");
+    for (i = 0; i < 5; i++) printf("%d ", b[i]);
+
+    // 呼叫交換函式
+    swap_array_contents(a, b, 5);
+
+    printf("\n\n交換後：\n");
+    printf("a: ");
+    for (i = 0; i < 5; i++) printf("%d ", a[i]);
+    printf("\nb: ");
+    for (i = 0; i < 5; i++) printf("%d ", b[i]);
+    printf("\n");
+
+    return 0;
+}
+
+// 函式定義：使用暫時變數逐一交換
+void swap_array_contents(int arr1[], int arr2[], int size) {
+    int temp;
+    int i;
+    for (i = 0; i < size; i++) {
+        temp = arr1[i];
+        arr1[i] = arr2[i];
+        arr2[i] = temp;
+    }
+}
